@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Events.php" server="172.20.11.114//var/GatewayWorker/" local="132009896144921617" remote="132009896090000000" Dst="0" />
+<file name="start_businessworker.php" server="172.20.11.114//var/GatewayWorker/" local="132005699240000000" remote="132005699240000000" Dst="0" />
+<file name="start_DevGateway.php" server="172.20.11.114//var/GatewayWorker/" local="132009885517863784" remote="132009885470000000" Dst="0" />
+<file name="start_register.php" server="172.20.11.114//var/GatewayWorker/" local="132005699240000000" remote="132005699240000000" Dst="0" />
+<file name="start_UserGateway.php" server="172.20.11.114//var/GatewayWorker/" local="132005699240000000" remote="132005699240000000" Dst="0" />
+<file name="UserMessageHandler.php" server="172.20.11.114//var/GatewayWorker/" local="132016715722709008" remote="132016715590000000" Dst="0" />
+<file name="LOG.php" server="172.20.11.114//var/GatewayWorker/" local="132005699230000000" remote="132005699230000000" Dst="0" />
+<file name="Utils.php" server="172.20.11.114//var/GatewayWorker/" local="132006543103960634" remote="132006543100000000" Dst="0" />
+<file name="log.php" server="172.20.11.114//var/GatewayWorker/" local="132005699230000000" remote="132006258250000000" Dst="0" />
+<file name="DevPackageHandler.php" server="172.20.11.114//var/GatewayWorker/" local="132016784212426396" remote="132016784080000000" Dst="0" />
+</dwsync>

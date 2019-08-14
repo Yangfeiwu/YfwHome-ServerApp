@@ -1,0 +1,56 @@
+1556087596[**------WingTest.php被ip:连接！！------**]
+
+1556087624[**------WingTest.php被ip:连接！！------**]
+
+05:00:27pm[onMessage]:Dev accept!
+
+05:00:27pm[Dev_Msg]:]78w
+
+08:51:11pm[onMessage]:Dev accept!
+
+08:51:11pm[Dev_Msg]:11
+
+08:54:52pm[onMessage]:User accept!
+
+08:54:52pm[User_Msg]:1111
+
+08:54:52pm[User_Msg]:unknown parse source！
+
+09:55:02pm[onMessage]:Dev accept!
+
+09:55:02pm[Dev_Msg]:11
+
+10:33:17pm[onMessage]:User accept!
+
+10:33:17pm[User_Msg]:11
+
+10:33:17pm[User_Msg]:unknown parse source！
+
+10:38:22pm[onMessage]:Dev accept!
+
+10:38:22pm[Dev_Msg]:Array
+
+10:48:44pm[onMessage]:Dev accept!
+
+10:48:44pm[Dev_Msg]:Array
+
+10:50:55pm[onMessage]:Dev accept!
+
+10:50:55pm[Dev_Msg]:Array
+
+10:52:15pm[onMessage]:Dev accept!
+
+10:52:15pm[Dev_Msg]:Array
+
+10:56:15pm[onMessage]:Dev accept!
+
+10:56:15pm[Dev_Msg]:Array
+
+10:56:21pm[onMessage]:Dev accept!
+
+10:56:21pm[Dev_Msg]:Array
+
+10:59:03pm[onMessage]:Dev accept!
+
+10:59:03pm[Dev_Msg]:Array
+
