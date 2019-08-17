@@ -1,6 +1,6 @@
 <?php
 /*
-  Éè±¸Óë·þÎñÆ÷Êý¾Ý°üÐ­ÒéµÄÒµÎñÂß¼­
+  è®¾å¤‡ä¸ŽæœåŠ¡å™¨æ•°æ®åŒ…åè®®çš„ä¸šåŠ¡é€»è¾‘
 */
 
 use \GatewayWorker\Lib\Gateway;
@@ -12,7 +12,7 @@ class DevPackageHandler
 	public static function handlePackage($client_id, $package_data, $db)
 	{
 
-		//¶ÔÉè±¸µÄÊý¾Ý°ü½øÐÐ·ÖÎö²¢×÷³öÏàÓ¦µÄ¶¯×÷
+		//å¯¹è®¾å¤‡çš„æ•°æ®åŒ…è¿›è¡Œåˆ†æžå¹¶ä½œå‡ºç›¸åº”çš„åŠ¨ä½œ
     	switch ($package_data['type']) {
             case 'Utils::PING':
                 if(!empty($_SESSION['PID'])){
@@ -56,7 +56,7 @@ class DevPackageHandler
     }
 	
 	 /**
-   	* ¼ì²éÉè±¸ÊÇ·ñÁ¬½Ó³É¹¦£¬²¢·¢ËÍÁ¬½Ó½á¹û
+   	* æ£€æŸ¥è®¾å¤‡æ˜¯å¦è¿žæŽ¥æˆåŠŸï¼Œå¹¶å‘é€è¿žæŽ¥ç»“æžœ
    	* @param string $package_data
    	* @return bool
    	*/
@@ -72,9 +72,9 @@ class DevPackageHandler
 		   LOG::OutLog("[DevPackHandler_Msg]:","Server: PID is existence....\n"); //
             return false;
         }
-     	//¼ì²éPID
+     	//æ£€æŸ¥PID
     	if(empty($package_data['PID'])){               
-        	//PID+passwordÎª¿Õ£¬´´½¨µÇÂ¼Ê§°Ü·´À¡ÐÅÏ¢rejected
+        	//PID+passwordä¸ºç©ºï¼Œåˆ›å»ºç™»å½•å¤±è´¥åé¦ˆä¿¡æ¯rejected
      		$new_package = array('length' => 1, 'type' => Utils::SERVER_FEEDBACK_FAIL);
       		Gateway::sendToCurrentClient($new_package);
             //error
@@ -93,18 +93,18 @@ class DevPackageHandler
      		return false;
    		}
 
-     	//Éè±¸PID
+     	//è®¾å¤‡PID
    		$PID = trim($package_data['PID']);
 
-      	//Éè±¸¼¯session
+      	//è®¾å¤‡é›†session
    		$dev_sessions = Gateway::getAllClientSessions();
       	
-      	//¼ì²éPIDÊÇ·ñÖØ¸´µÇÂ¼
+      	//æ£€æŸ¥PIDæ˜¯å¦é‡å¤ç™»å½•
    		foreach ($dev_sessions as $temp_client_id => $temp_sessions) 
    		{
 
     		if(!empty($temp_sessions['PID']) && $temp_sessions['PID'] == $PID){
-          		//ÓÃ»§ÃûÖØ¸´£¬´´½¨µÇÂ¼Ê§°Ü·´À¡ÐÅÏ¢
+          		//ç”¨æˆ·åé‡å¤ï¼Œåˆ›å»ºç™»å½•å¤±è´¥åé¦ˆä¿¡æ¯
       			$new_package = array('length' => 1, 'type' => Utils::SERVER_FEEDBACK_FAIL);
       			Gateway::sendToCurrentClient($new_package);
                 //error
@@ -112,19 +112,19 @@ class DevPackageHandler
 			  LOG::OutLog("[DevPackHandler_Msg]:","Dev[". $PID ."]:connect failed! PID is repeated.....\n"); //
       			//Gateway::closeCurrentClient();
 
-                //Îª·ÀÖ¹Éè±¸1s¶à´ÎÖØÁ¬
+                //ä¸ºé˜²æ­¢è®¾å¤‡1så¤šæ¬¡é‡è¿ž
                 Timer::add(5, array('\GatewayWorker\Lib\Gateway', 'closeClient'), array($client_id), false);
       			return false;
     		}
   		}
 
-		//Ã»ÓÐ·¢ÏÖÖØÃû
-  		//°ÑPID¡¢passwordµ½sessionÖÐ
+		//æ²¡æœ‰å‘çŽ°é‡å
+  		//æŠŠPIDã€passwordåˆ°sessionä¸­
   		$_SESSION['PID'] = $PID;
-      	//TODO: ¼ì²éÃÜÂë
+      	//TODO: æ£€æŸ¥å¯†ç 
   		//$_SESSION['password'] = $password;
 
-  		//´´½¨Á¬½Ó³É¹¦·´À¡ÐÅÏ¢
+  		//åˆ›å»ºè¿žæŽ¥æˆåŠŸåé¦ˆä¿¡æ¯
   		$new_package = array('length' => 1, 'type' => Utils::SERVER_FEEDBACK_SUCCESS);
       	Gateway::sendToCurrentClient($new_package);
   	
@@ -132,7 +132,7 @@ class DevPackageHandler
        
 	     LOG::OutLog("[DevPackHandler_Msg]:","Dev[". $PID ."]:connect successful!.....\n"); //
 		 
-				//Í¨ÖªÓÃ»§Éè±¸ÒÑÉÏÏß
+				//é€šçŸ¥ç”¨æˆ·è®¾å¤‡å·²ä¸Šçº¿
 					$new_message = array('type' => 'UP_LINE', 'from' => 'SERVER', 'content' => $PID);					
     				Gateway::sendToUid($_SESSION['PID'], json_encode($new_message));
 					
@@ -144,7 +144,7 @@ class DevPackageHandler
 	
 	
 	 /**
-     * ÏòÓÃ»§·¢ËÍÉè±¸×´Ì¬ÏûÏ¢
+     * å‘ç”¨æˆ·å‘é€è®¾å¤‡çŠ¶æ€æ¶ˆæ¯
      */
 	private static function SendDevStat($client_id, $package_data)
 	{
@@ -158,16 +158,16 @@ class DevPackageHandler
     		Gateway::closeClient($client_id);
     		return false;
   		}else{
-		//	 LOG::OutLog("[SendDevStat]:","Dev[". $PID ."]:Êý¾ÝÄÚÈÝ£º".$package_data['data'].".....\n"); //
+		//	 LOG::OutLog("[SendDevStat]:","Dev[". $PID ."]:æ•°æ®å†…å®¹ï¼š".$package_data['data'].".....\n"); //
 			
-          	//Ïò°ó¶¨µÄÓÃ»§·¢ËÍ×ËÌ¬ÐÅÏ¢
+          	//å‘ç»‘å®šçš„ç”¨æˆ·å‘é€å§¿æ€ä¿¡æ¯
           	$new_message = array('type' => 'DevMsg', 'from' => 'SERVER', 'data' =>$package_data['data']);
     		Gateway::sendToUid($_SESSION['PID'], json_encode($new_message,JSON_UNESCAPED_UNICODE));
     		return true;
   		}
 	}
 	 /**
-     * ÏòÓÃ»§·¢ËÍÍê³ÉÏûÏ¢
+     * å‘ç”¨æˆ·å‘é€å®Œæˆæ¶ˆæ¯
      */
 	private static function sendDone($client_id, $package_data)
 	{
@@ -181,9 +181,9 @@ class DevPackageHandler
     		Gateway::closeClient($client_id);
     		return false;
   		}else{
-		//	 LOG::OutLog("[SendDevStat]:","Dev[". $PID ."]:Êý¾ÝÄÚÈÝ£º".$package_data['data'].".....\n"); //
+		//	 LOG::OutLog("[SendDevStat]:","Dev[". $PID ."]:æ•°æ®å†…å®¹ï¼š".$package_data['data'].".....\n"); //
 			
-          	//Ïò°ó¶¨µÄÓÃ»§·¢ËÍ×ËÌ¬ÐÅÏ¢
+          	//å‘ç»‘å®šçš„ç”¨æˆ·å‘é€å§¿æ€ä¿¡æ¯
           	$new_message = array('type' => 'DONE', 'from' => 'DEV', 'data' =>$package_data['info']);
     		Gateway::sendToUid($_SESSION['PID'], json_encode($new_message,JSON_UNESCAPED_UNICODE));
     		return true;
